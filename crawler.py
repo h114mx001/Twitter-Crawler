@@ -41,7 +41,7 @@ gdrive_auth = authenticate()
 
 def upload_to_gdrive(filename, gdrive_auth, FOLDER_ID):
     file = gdrive_auth.CreateFile({'title': filename, 'parents': [{'id': FOLDER_ID}]})
-    file.SetContentFile("./test/" + filename)
+    file.SetContentFile("./out/" + filename)
     file.Upload()
     print(f"Upload {filename} to Google Drive")
     return True
@@ -94,7 +94,7 @@ def crawl_keyword(keyword, until, exclude_retweets, exclude_replies, api_key):
             query += " -filter:replies"
         # Only save tweetID, date, content, username, retweet count, like count, reply count, hashtags
         num_tweets = 0
-        with open("./test/" + file_name, 'a') as f:
+        with open("./out/" + file_name, 'a') as f:
             for tweet in sntwitter.TwitterSearchScraper(query).get_items():
                 num_tweets += 1
                 f.write(json.dumps({'tweetID': tweet.id, 'conversationId': tweet.conversationId, 'date': str(tweet.date), 'content': tweet.rawContent, 'username': tweet.user.username, 'retweetCount': tweet.retweetCount, 'likeCount': tweet.likeCount, 'replyCount': tweet.replyCount, 'hashtags': tweet.hashtags}) + "\n")
