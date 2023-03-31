@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <h1>Submit Keywords</h1>
+  <form action="{{ url_for('submit') }}" method="post">
+    <div class="form-group">
+      <label for="keywords">Enter your keywords, separated by commas:</label>
+      <input type="text" class="form-control" id="keywords" name="keywords" placeholder="Enter keywords">
+    </div>
+    <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" id="confirm" name="confirm">
+      <label class="form-check-label" for="confirm">I confirm that these are the keywords I want to search for.</label>
+      <small id="reminder" class="form-text text-muted">Note: Your submission cannot be rolled back.</small>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+{% endblock %}
