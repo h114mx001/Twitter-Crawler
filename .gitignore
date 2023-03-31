@@ -1,9 +1,0 @@
-# Ignore JSON, TXT, and PEM files
-*.json
-*.txt
-*.pem
-
-# Include empty directories
-!/credentials/
-!/logs/
-!/out/
